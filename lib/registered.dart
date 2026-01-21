@@ -2,7 +2,6 @@ import 'package:csc_picker_plus/csc_picker_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'placeholder.dart';
 
 class RegisteredPage extends StatefulWidget {
   const RegisteredPage({super.key, required this.title});
@@ -35,10 +34,11 @@ class _RegisteredPageState extends State<RegisteredPage> {
           ),
           IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PlaceholderScreen()),
-              );
+              Navigator.pushNamed(context, '/placeholder');
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => PlaceholderScreen()),
+              // );
             },
             icon: const Icon(Icons.arrow_circle_right),
             tooltip: 'Go to Next Page',
@@ -59,17 +59,17 @@ class _RegisteredPageState extends State<RegisteredPage> {
                   countryStateLanguage: CountryStateLanguage.englishOrNative,
                   onCountryChanged: (value) {
                     setState(() {
-                      country = '';
+                      country = value;
                     });
                   },
                   onStateChanged: (value) {
                     setState(() {
-                      state = '';
+                      state = value ?? "this is state ";
                     });
                   },
                   onCityChanged: (value) {
                     setState(() {
-                      state = '';
+                      state = value ?? "this is dis  change ";
                     });
                   },
                 ),
